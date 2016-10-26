@@ -5,28 +5,11 @@
 </template>
 
 
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=7KNBZ-IASWP-SLYDL-LL446-ACEE6-Y4BLX"></script>
-
 
 <script>
-import carframe from './views/car-frame'
-var data={
-  a:1
-}
 export default {
-   name:'app',
-   data:function(){
-    return {
-      a:'1',
-      b:'nihao'
-    }
-  },
-  component:[carframe],
+  name:'app',
   methods:{
-    doit:function(){
-      
-    }
   }
 }
 </script>
@@ -34,7 +17,19 @@ export default {
 
 <style>
 html {
-  height: 100%;
-}
-
+    height: 100%;
+  }
+  body{
+    background-color: #ffc056;
+  }
+  /*alert*/
+  .weui_dialog{
+    margin-left:-43%!important;
+  }
+  .weui_dialog_ft{
+    font-size: 23px!important;
+  }
+  .weui_dialog_bd{
+    font-size:17px!important;
+  }
 </style>

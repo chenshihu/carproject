@@ -3,13 +3,13 @@
         <header>
             <div class="titlebar">
                 <h1>
-                <router-link class="backoff" to='/index'>&lt;</router-link>车牌号识别结果
+                <router-link class="backoff" to='/index'>&lt;</router-link>车牌号查询
                 </h1>
             </div>
         </header>
         <article>
             <div class="query">
-                <input class="center-block" type="text" id="chepai_input" v-model="chepaiData" >
+                <input class="center-block" type="text" id="chepai_input" v-model="chepaiData" placeholder="请输入车牌号">
                 <button class="center-block" id="chepai_query" @click="chepai_query">查询</button>
             </div>
             <div class="box  text-center">

@@ -4,60 +4,65 @@
             <div class="titlebar">
                 <h1> 
                      <router-link class="backoff" to='/index'>&lt;</router-link>
-                    车架号识别结果
+                    车架号查询
                 </h1>
             </div>
         </header>
         <article>
             <div class="query">
-                <input type="text" id="chejia_input" v-modle="chejia"/>
+                <input type="text" id="chejia_input" v-model="chejia" placeholder='请输入车架号'/>
                 <button id="chejia_query" @click="chejia_query">查询</button>
             </div>
             <div class="box box-center">
-                <router-link to="/carlicense"  class="turn-car" style="color: #FFF;">通过车牌号查询</router-link>
+                <router-link to="/carname"  class="turn-car" style="color: #FFF;">通过车牌号查询</router-link>
             </div>
         </article>
     </section>
 </template>
 <script>
+    import wx from 'weixin-js-sdk'
+    import "../../static/jquery-2.1.4.js"
+    import "../../static/jquery-weui.min.css"
+    import "../../static/jquery-weui.min.js"
+    import "../../static/weui.min.css"
+    import store from '../vuex/store';
 	export default{
-        props:["ok"],
         data:function(){
             return {
-                chejia:''
+                chejia:'',
+                param:''
             }
         },
         methods:{
             chejia_query:function(){
+                this.param=store.state.param;
                 if(this.chejia){
-                    loading.show();
-                    param.isCamera=false;
-                    param.frameNo=this.chejia;
-                    param.licenseNo="";
-                    $.get("${ctx}/query",param,function(data){
-                        loading.hide();
+                    $.showLoading();
+                    this.param.isCamera=false;
+                    this.param.frameNo=this.chejia;
+                    this.param.licenseNo="";
+                    $.get("${ctx}/query",this.param,function(data){
+                        $.hideLoading();
                         if(data){
                             if(data.isPicc){
-                                openPage("#cars_zaibao");
+                                this.$router.push('/carzaibao');
                             }else{
-                                openPage("#cars_notzaibao");
+                                this.$router.push('/notzaibao');
                             }
-                            fillData(data);
+                            store.state.carinfo=data;
                         }else{
-                            $(".no_chejia_div").show();
-                            $(".no_chepai_div").hide();
-                            $("#no_chejia_input").val(chejia);
-                            openPage("#info_add");
+                            store.state.hascar=false,
+                            this.$router.push('/nocar');
                         }
                     });
                 }else{
-                    // new Alert("请输入车架号").show();
+                    $.alert("请输入车架号",'');
                 }
             },
         }
     }
 </script>
-<style >
+<style scoped>
     html{height: 100%}
     header,h1,div{
         padding:0;
@@ -98,6 +103,7 @@
         text-align: center;
         color:#666;
         border: 1px solid gray;
+        text-transform: uppercase;
     }
     #chejia #chejia_query{
         display:block;

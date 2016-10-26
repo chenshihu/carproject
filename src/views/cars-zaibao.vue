@@ -2,49 +2,49 @@
 	<section id="cars_zaibao"   data-animation="fade" class=" section_noback" >
         <header>
             <div class="titlebar">
-                <h1><router-link class="backoff" to='/index'>&lt;</router-link>我司商业险在保车辆</h1>
+                <h1><button class="backoff" @click="back">&lt;</button>我司商业险在保车辆</h1>
             </div>
         </header>
         <article>
             <div class="group">
                 <div class="inputbox underline">
                     <label class="inputbox-left">车牌号</label>
-                    <div class="inputbox-right licenseNo">{{}}</div>
+                    <div class="inputbox-right licenseNo">{{carinfo.carInfo.licenseNo}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">车架号</label>
-                    <div class="inputbox-right frameNo">{{}}</div>
+                    <div class="inputbox-right frameNo">{{carinfo.carInfo.frameNo}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">发动机号</label>
-                    <div class="inputbox-right engineNo">{{}}</div>
+                    <div class="inputbox-right engineNo">{{carinfo.carInfo.engineNo}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">初登日期号</label>
-                    <div class="inputbox-right insertTime">{{}}</div>
+                    <div class="inputbox-right insertTime">{{carinfo.carInfo.insertTime}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">车辆型号</label>
-                    <div class="inputbox-right brandName">{{}}</div>
+                    <div class="inputbox-right brandName">{{carinfo.carInfo.brandName}}</div>
                 </div>
             </div>
             <div class="group">
                 <div class="inputbox underline">
                     <label class="inputbox-left">姓名</label>
-                    <div class="inputbox-right customerName">{{}}</div>
+                    <div class="inputbox-right customerName">{{carinfo.userInfo.customerName}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">手机号码</label>
-                    <div class="inputbox-right mobile">{{}}</div>
+                    <div class="inputbox-right mobile">{{carinfo.userInfo.mobile}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">证件号</label>
-                    <div class="inputbox-right idcard">{{}}</div>
+                    <div class="inputbox-right idcard">{{carinfo.userInfo.idcard}}</div>
                 </div>
                 <div class="inputbox underline">
                     <div class="box-flex-1 padding8">
                         <p>家庭住址</p>
-                        <small class="contactAddress float-right">{{}}</small>
+                        <small class="contactAddress float-right">{{carinfo.userInfo.contactAddress}}</small>
                     </div>
                 </div>
             </div>
@@ -52,63 +52,63 @@
                 <div class="inputbox underline shangyexian">
                     <label class="inputbox-left"><span class="mark-info">商业险保单号</span></label>
                     <div class="inputbox-right card box-flex-1">
-                        <p class="policyNo"></p>
-                        <small class="nowrap comName"></small>
+                        <p class="policyNo">{{carinfo.bi.policyNo}}</p>
+                        <small class="nowrap comName">{{carinfo.bi.comName}}</small>
                     </div>
                 </div>
                 <div class="inputbox underline shangyexian">
                     <label class="inputbox-left">起保日期</label>
-                    <div class="inputbox-right startDate">{{}}</div>
+                    <div class="inputbox-right startDate">{{carinfo.bi.startDate}}</div>
                 </div>
                 <div class="inputbox underline shangyexian">
                     <label class="inputbox-left">终保日期</label>
-                    <div class="inputbox-right endDate">{{}}</div>
+                    <div class="inputbox-right endDate">{{carinfo.bi.endDate}}</div>
                 </div>
                 <div class="inputbox underline shangyexian">
                     <label class="inputbox-left">保费</label>
-                    <div class="inputbox-right sumPremium">{{}}</div>
+                    <div class="inputbox-right sumPremium">{{carinfo.sumPremium2}}</div>
                 </div>
             </div>
             <div class="group">
                 <div class="inputbox underline jiaoqiangxian">
                     <label class="inputbox-left"><span class="mark-warn">交强险保单号</span></label>
                     <div class="inputbox-right card box-flex-1">
-                        <p class="policyNo"></p>
-                        <small class="nowrap comName"></small>
+                        <p class="policyNo">{{carinfo.ci.policyNo}}</p>
+                        <small class="nowrap comName">{{carinfo.ci.comName}}</small>
                     </div>
                 </div>
                 <div class="inputbox underline jiaoqiangxian">
                     <label class="inputbox-left">起保日期</label>
-                    <div class="inputbox-right startDate"></div>
+                    <div class="inputbox-right startDate">{{carinfo.ci.startDate}}</div>
                 </div>
                 <div class="inputbox underline jiaoqiangxian">
                     <label class="inputbox-left">终保日期</label>
-                    <div class="inputbox-right endDate"></div>
+                    <div class="inputbox-right endDate">{{carinfo.ci.endDate}}</div>
                 </div>
                 <div class="inputbox underline jiaoqiangxian">
                     <label class="inputbox-left">保费</label>
-                    <div class="inputbox-right sumPremium"></div>
+                    <div class="inputbox-right sumPremium">{{carinfo.sumPremium2}}</div>
                 </div>
             </div>
             <div class="group">
                 <div class="inputbox underline">
                     <label class="inputbox-left">出险次数</label>
-                    <div class="inputbox-right count"></div>
+                    <div class="inputbox-right count">{{carinfo.count}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">已决金额</label>
-                    <div class="inputbox-right sumPaid"></div>
+                    <div class="inputbox-right sumPaid">{{carinfo.sumPaid}}</div>
                 </div>
                 <div class="inputbox underline">
                     <label class="inputbox-left">未决金额</label>
-                    <div class="inputbox-right sumEstiPaid"></div>
+                    <div class="inputbox-right sumEstiPaid">0</div>
                 </div>
             </div>
             <div class="group">
                 <div class="inputbox underline">
                     <div class="box-flex-1 padding8">
                         <p><img class="address" src="../assets/gps.png"> 信息地址收集</p>
-                        <small class="address  float-right"></small>
+                        <small class="address  float-right">{{address}}</small>
                     </div>
                 </div>
             </div>
@@ -119,21 +119,37 @@
     </section>
 </template>
 <script>
+    import wx from 'weixin-js-sdk'
+    import "../../static/jquery-2.1.4.js"
+    import "../../static/jquery-weui.min.css"
+    import "../../static/jquery-weui.min.js"
+    import "../../static/weui.min.css"
+    import store from '../vuex/store'
     export default{
+        data:function(){
+            return{
+                param:'',
+                carinfo:store.state.carinfo,
+                address:store.state.address
+            }
+        },
         methods:{
             checkYes:function(){
-                $.post("${ctx}/checkYes",param,function(data){
-                     new Alert("登记成功！",{
-                          "onClickOk":function(e){
-                              wx.closeWindow();
-                          }
-                        }).show();
+                this.param=store.state.param;
+                $.post("${ctx}/checkYes",this.param,function(data){
+                     $.alert('登记成功！',function(){
+                        wx.closeWindow();
+                    });
                 });
+            },
+            back:function(){
+                this.$router.go(-1)
             }
         },
     }
     
 </script>
+
 <style scoped>
       html{height: 100%;}
       body{

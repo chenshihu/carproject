@@ -4,36 +4,58 @@
             <div class="titlebar">
                 <a href="javascript:back()"> <i class="icon icon-arrowleft"></i>
                 </a>
-                <h1><router-link class="backoff" to='/index'>&lt;</router-link>我司查无信息车辆</h1>
+                <h1><button class="backoff" @click='back'>&lt;</button>我司查无信息车辆</h1>
             </div>
         </header>
         <article class="info_add">
-            <div class="no_chepai_div" style="display: none;">
+            <div class="no_chepai_div" v-if="hascar">
                 <label class="tips" style="color: #e93737">查无此车牌号信息</label> 
-                <input calss='checkbox' type="text" id="no_chepai_input" readonly="readonly">
+                <input class='checkbox' type="text" id="no_chepai_input" readonly="readonly">
             </div>
-            <div class="no_chejia_div" style="">
-                <label class="tips" style="color: #e93737">查无此车架号信息</label> <input class='checkbox' type="text" id="no_chejia_input"
+            <div class="no_chejia_div" v-if="!hascar">
+                <label class="tips" style="color: #e93737">查无此车架号信息</label> 
+                <input class='checkbox' type="text" id="no_chejia_input"
                                                                       readonly="readonly">
             </div>
-            <label class="address"><img src="../assets/gps.png"></label>
-            <button id="checkNo">登记</button>
+            <label class="address"><img src="../assets/gps.png">{{address}}</label>
+            <button id="checkNo" v-on:click="login">登记</button>
         </article>
     </section>
 </template>
-<script></script>
+<script>
+    import wx from 'weixin-js-sdk'
+    import "../../static/jquery-2.1.4.js"
+    import "../../static/jquery-weui.min.css"
+    import "../../static/jquery-weui.min.js"
+    import "../../static/weui.min.css"
+    import store from '../vuex/store'
+    export default{
+        data:function(){
+            return{
+            hascar:store.state.hascar,
+            param:'',
+            address:store.state.address
+        }
+        },
+        methods:{
+            login:function(){
+                this.param=store.state.param;
+                $.post("${ctx}/checkNo",this.param,function(data){
+                    $.alert('登记成功！',function(){
+                        wx.closeWindow();
+                    })
+                });
+            },
+            back:function(){
+                this.$router.go(-1);
+            }
 
-<style scoped>
-    header,h1{
-        padding:0;
-        margin:0;}
-    body {
-        padding:0;
-        margin:0;
-        width:auto;
-        background-color: #ffc056;
+        }
     }
-     .titlebar h1 .backoff{
+</script>
+        
+<style scoped>
+     .titlebar .backoff{
             float: left;
             text-decoration: none;
             color:#30A29E;
@@ -49,6 +71,7 @@
         font-size:17px;
         text-align: center;
         line-height: 44px;
+        margin-top: -25px;
     }
    .info_add .tips{
         display: block;

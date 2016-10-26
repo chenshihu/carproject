@@ -4,14 +4,14 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import Carframe from './views/car-frame'
 import Carlicense from './views/car-license'
+import Carlicensehandin from './views/car-license-handin'
 import index from './views/index.vue'
 import Carzaibao from './views/cars-zaibao.vue'
+import notzaibao from './views/cars-nozaibao.vue'
 import nocar from './views/no-car.vue'
 import $ from 'jquery'
 import Vuex from 'vuex'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-Vue.use(Element);
+
 Vue.use(Vuex);
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -21,9 +21,11 @@ Vue.use(VueResource);
 const routes=[
         {path: '/carframe', component: Carframe},
         { path: '/carlicense', component: Carlicense},
+        { path: '/carname', component: Carlicensehandin},
         {path:'/carzaibao',component:Carzaibao},
         {path:'/nocar',component:nocar},
         {path:'/index',component:index},
+        {path:'/notzaibao',component:notzaibao},
         { path: '*', redirect: '/index' }
     ]
 const router = new VueRouter({
